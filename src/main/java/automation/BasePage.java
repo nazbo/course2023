@@ -24,7 +24,7 @@ public class BasePage extends LoadableComponent {
         Assert.isTrue(realUrl.equals(pageUrl), "The open url is not expected!");
     }
 
-    private boolean isBrowserOpen() {
+    public boolean isBrowserOpen() {
         boolean browserIsOpen;
         try {
             webDriver.getWindowHandles();

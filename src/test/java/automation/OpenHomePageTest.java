@@ -21,7 +21,7 @@ public class OpenHomePageTest {
     public static WebDriver webDriver;
     public static final String homePageUrl = "https://practice.automationtesting.in/";
     public static final String myAccHyperLink = "//*[@id=\"menu-item-50\"]/a";
-    public static final String sliderXpath = "//*[@id=\"n2-ss-6-align\"]";
+    public static HomePage homePage;
 
     @BeforeAll
     public static void initialSetup() {
@@ -30,6 +30,7 @@ public class OpenHomePageTest {
         options.addArguments("Start-Maximized");
         options.addExtensions(new File("src/test/java/resources/chromeExtensions/Adblocker2.crx"));
         webDriver = new ChromeDriver(options);
+        homePage = new HomePage(webDriver, homePageUrl);
     }
 
     @AfterAll
@@ -40,23 +41,21 @@ public class OpenHomePageTest {
 
     @Given("the browser is open")
     public void the_browser_is_open() {
-        boolean browserIsOpen;
-        try {
-            webDriver.getWindowHandles();
-            browserIsOpen = true;
-        } catch (WebDriverException exception) {
-            browserIsOpen = false;
-        }
-        Assertions.assertTrue(browserIsOpen, "The browser was not open when it was expected!");
+        Assertions.assertTrue(homePage.isBrowserOpen());
     }
     @When("homepage is entered")
     public void homepage_is_entered() {
-        webDriver.get(homePageUrl);
-        Assertions.assertEquals(webDriver.getCurrentUrl(), homePageUrl);
+        boolean homePageLoaded = true;
+        try {
+            homePage.isLoaded();
+        } catch (Error error){
+            homePageLoaded = false;
+        }
+        Assertions.assertTrue(homePageLoaded);
     }
     @Then("the user is on the correct homepage")
     public void the_user_is_on_the_correct_homepage() {
-        Assertions.assertTrue(webDriver.findElement(By.xpath(myAccHyperLink)).isDisplayed());
+        Assertions.assertTrue(homePage.checkAccButton());
     }
     @Then("the homepage contains three slides")
     public void the_homepage_contains_slides() {
