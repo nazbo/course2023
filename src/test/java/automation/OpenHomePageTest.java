@@ -6,21 +6,17 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
 
 import java.io.File;
 import java.util.List;
 
 public class OpenHomePageTest {
-    //!!! Does not include the elements for login.
 
     public static WebDriver webDriver;
     public static final String homePageUrl = "https://practice.automationtesting.in/";
-    public static final String myAccHyperLink = "//*[@id=\"menu-item-50\"]/a";
     public static HomePage homePage;
 
     @BeforeAll
