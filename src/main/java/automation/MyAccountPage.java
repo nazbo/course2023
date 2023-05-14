@@ -56,5 +56,13 @@ public class MyAccountPage extends BasePage{
         regPassBox.sendKeys(passWd);
     }
 
+    public String getSetUserEmailAttachment() {
+        return setUserEmailAttachment;
+    }
+
+    public String getUserIdValue() {
+        return regEmailBox.getAttribute("value");
+    }
+
     //Can use the setUserEmailAttachment for the login methods
 }
