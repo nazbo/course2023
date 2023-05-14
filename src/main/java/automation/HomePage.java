@@ -38,4 +38,8 @@ public class HomePage extends BasePage {
         List<WebElement> slides = slider.findElements(slidesXPaths);
         return slides.size();
     }
+
+    public void myAccCLick() {
+        myAccount.click();
+    }
 }
