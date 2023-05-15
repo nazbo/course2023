@@ -28,8 +28,8 @@ public class OpenMyAccountTest {
 
     @AfterAll
     public static void closeSessions() {
-//        webDriver.close();
-//        webDriver.quit();
+        webDriver.close();
+        webDriver.quit();
     }
     @Given("the browser is open and we are on the home page")
     public void the_browser_is_open_and_we_are_on_the_home_page() {
@@ -38,7 +38,6 @@ public class OpenMyAccountTest {
         try {
             homePage.isLoaded();
         } catch (Error error){
-            Assertions.assertEquals(error, "dsa");
             homePageLoaded = false;
         }
         Assertions.assertTrue(homePageLoaded);
