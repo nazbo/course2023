@@ -1,6 +1,5 @@
 package automation;
 
-import dev.failsafe.internal.util.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.LoadableComponent;
 

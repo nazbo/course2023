@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import java.io.File;
 
 public class RegisterMyAccountTest {
 
@@ -23,15 +22,15 @@ public class RegisterMyAccountTest {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("Start-Maximized");
-        options.addExtensions(new File("src/test/java/resources/chromeExtensions/Adblocker2.crx"));
+//        options.addExtensions(new File("src/test/java/resources/chromeExtensions/Adblocker2.crx"));
         webDriver = new ChromeDriver(options);
         myAccountPage = new MyAccountPage(webDriver, myAccPageUrl);
     }
 
     @AfterAll
     public static void closeSessions() {
-        webDriver.close();
-        webDriver.quit();
+//        webDriver.close();
+//        webDriver.quit();
     }
     @Given("the browser is open and we are on the registration page")
     public void the_browser_is_open_and_we_are_on_the_registration_page() {
@@ -46,8 +45,8 @@ public class RegisterMyAccountTest {
     }
     @When("^the userId: (.*) and password: (.*) are provided$")
     public void the_user_id_mark_and_password_are_provided(String usrId, String passWd) {
-        myAccountPage.setUserEmail(usrId);
         myAccountPage.setUserPassword(passWd);
+        myAccountPage.setUserEmail(usrId);
 
         Assertions.assertEquals(myAccountPage.getUserIdValue(), usrId + myAccountPage.getSetUserEmailAttachment());
     }
