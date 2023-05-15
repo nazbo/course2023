@@ -35,7 +35,7 @@ public class OpenHomePageTest {
         webDriver.quit();
     }
 
-    @Given("the browser is open")
+    @Given("the browser is open")     
     public void the_browser_is_open() {
         Assertions.assertTrue(homePage.isBrowserOpen());
     }

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class HomePage extends BasePage {
-    @FindBy(xpath = "\"//*[@id=\\\"menu-item-50\\\"]/a\"")
+    @FindBy(xpath = "//*[@id=\"menu-item-50\"]/a")
     WebElement myAccount;
     @FindBy(xpath = "//*[@id=\"n2-ss-6\"]/div[1]/div/div")
     WebElement slider;

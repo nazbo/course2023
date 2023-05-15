@@ -11,6 +11,7 @@ public class BasePage extends LoadableComponent {
     public BasePage (WebDriver webDriver, String pageUrl) {
         this.webDriver = webDriver;
         this.pageUrl = pageUrl;
+        this.load();
     }
 
     @Override
@@ -20,10 +21,11 @@ public class BasePage extends LoadableComponent {
 
     @Override
     public void isLoaded() throws Error {
-        String realUrl = webDriver.getCurrentUrl();
-        Assert.isTrue(realUrl.equals(pageUrl), "The open url is not expected!");
+        String realUrl = webDriver.getCurrentUrl().trim();
+        if(!realUrl.equals(pageUrl)) {
+            throw new Error("Wrong loaded page! Expected: " + pageUrl + " , but got: " + realUrl);
+        }
     }
-
     public boolean isBrowserOpen() {
         boolean browserIsOpen;
         try {
