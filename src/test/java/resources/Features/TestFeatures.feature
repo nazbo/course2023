@@ -4,11 +4,10 @@ Feature: Common application Feature
     Given the browser is open
     When homepage is entered
     Then the user is on the correct homepage
-    And the homepage contains 3 slides
+    And the homepage contains three slides
 
   Scenario: Go to the my account home page
     Given the browser is open and we are on the home page
     When the user follows the My account hyper link
-    Then the user is on the login/register page
-
-  #Scenario: Use the correct id and password to successfully sing in
+    Then the user is on the login or register
+    #The last check can changed to >the user is no longer on the home page<
