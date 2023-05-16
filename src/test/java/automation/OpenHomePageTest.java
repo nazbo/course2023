@@ -5,13 +5,11 @@ import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import java.io.File;
-import java.util.List;
+
 
 public class OpenHomePageTest {
 
@@ -35,7 +33,7 @@ public class OpenHomePageTest {
         webDriver.quit();
     }
 
-    @Given("the browser is open")     
+    @Given("the browser is open")
     public void the_browser_is_open() {
         Assertions.assertTrue(homePage.isBrowserOpen());
     }
@@ -55,8 +53,7 @@ public class OpenHomePageTest {
     }
     @Then("the homepage contains three slides")
     public void the_homepage_contains_slides() {
-        WebElement slider = webDriver.findElement(By.xpath("//*[@id=\"n2-ss-6\"]/div[1]/div/div"));
-        List<WebElement> c = slider.findElements(By.xpath("./child::*"));
-        Assertions.assertEquals(c.size(), 3);
+        int slidesNum = homePage.findNumberOfSlides();
+        Assertions.assertEquals(slidesNum, 3);
     }
 }
