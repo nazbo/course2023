@@ -29,8 +29,8 @@ public class RegisterMyAccountTest {
 
     @AfterAll
     public static void closeSessions() {
-        webDriver.close();
-        webDriver.quit();
+//        webDriver.close();
+//        webDriver.quit();
     }
     @Given("the browser is open and we are on the registration page")
     public void the_browser_is_open_and_we_are_on_the_registration_page() {
